@@ -40,7 +40,6 @@ body {
 
 .tip {
   display: flex;
-  justify-content: space-between;
   font-weight: 600;
   font-size: 13px;
 }
@@ -53,13 +52,15 @@ body {
   color: #007FFF;
 }
 
-.create, .edit {
+.create,
+.edit {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.create .blur, .edit .blur {
+.create .blur,
+.edit .blur {
   background: rgba(0, 0, 0, 0.2588235294);
   width: 100vw;
   height: 100vh;
@@ -67,7 +68,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-.create .modal, .edit .modal {
+.create .modal,
+.edit .modal {
   width: 432px !important;
   height: 377px !important;
   background: #fff;
@@ -77,17 +79,20 @@ body {
   justify-content: center;
   border-radius: 5px;
 }
-.create .modal h2, .edit .modal h2 {
+.create .modal h2,
+.edit .modal h2 {
   width: 350px;
   margin-bottom: 15px;
 }
-.create form, .edit form {
+.create form,
+.edit form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.create form .inp, .edit form .inp {
+.create form .inp,
+.edit form .inp {
   width: 350px;
   height: 40px;
   border: 1px solid #000000;
@@ -103,29 +108,53 @@ body {
 .create form .inp::-moz-placeholder, .edit form .inp::-moz-placeholder {
   color: #000000;
 }
-.create form .inp::placeholder, .edit form .inp::placeholder {
+.create form .inp::placeholder,
+.edit form .inp::placeholder {
   color: #000000;
 }
-.create form .inp[type=submit], .edit form .inp[type=submit] {
+.create form .inp[type=submit],
+.edit form .inp[type=submit] {
   background-color: #0047FF;
   color: #fff;
   border: none;
   cursor: pointer;
 }
-.create form .inp.error, .edit form .inp.error {
+.create form .inp.error,
+.edit form .inp.error {
   border-color: red;
 }
 .create form .inp.error::-moz-placeholder, .edit form .inp.error::-moz-placeholder {
   color: red;
 }
-.create form .inp.error::placeholder, .edit form .inp.error::placeholder {
+.create form .inp.error::placeholder,
+.edit form .inp.error::placeholder {
   color: red;
 }
 
+.edit .modal {
+  position: relative;
+}
+.edit i {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, 50%);
+  width: 30px;
+  height: 30px;
+  background: #f00;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
 .content {
-  width: 1000px;
-  margin-top: 40px;
+  width: 100%;
+  margin-top: 20px !important;
   padding: 0 30px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -177,6 +206,68 @@ body {
 }
 .box .progress-box.done {
   color: lime;
+}
+
+.tip {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.tab,
+.tab2 {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  flex-direction: row !important;
+  padding: 0;
+}
+.tab.tab-list,
+.tab2.tab-list {
+  margin-top: 30px;
+  color: #949494;
+}
+.tab .title,
+.tab2 .title {
+  width: 20%;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+}
+.tab .description,
+.tab2 .description {
+  width: 35%;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+}
+.tab .time,
+.tab2 .time {
+  width: 15%;
+}
+.tab .time span,
+.tab2 .time span {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+.tab .time span:first-child,
+.tab2 .time span:first-child {
+  margin-right: 10px;
+}
+.tab .progress-box,
+.tab2 .progress-box {
+  width: 20%;
+  text-align: center;
+}
+
+.list {
+  padding: 0;
 }
 
 .none {

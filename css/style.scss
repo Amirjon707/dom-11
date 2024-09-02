@@ -42,7 +42,6 @@ body {
 
 .tip {
     display: flex;
-    justify-content: space-between;
     font-weight: 600;
     font-size: 13px;
 
@@ -57,7 +56,8 @@ body {
     }
 }
 
-.create, .edit {
+.create,
+.edit {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -117,8 +117,10 @@ body {
                 border: none;
                 cursor: pointer;
             }
+
             &.error {
                 border-color: red;
+
                 &::placeholder {
                     color: red;
                 }
@@ -128,10 +130,33 @@ body {
     }
 }
 
+.edit {
+    .modal {
+        position: relative;
+    }
+
+    i {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        right: 0;
+        transform: translate(-50%, 50%);
+        width: 30px;
+        height: 30px;
+        background: #f00;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+}
+
 .content {
-    width: 1000px;
-    margin-top: 40px;
+    width: 100%;
+    margin-top: 20px !important;
     padding: 0 30px;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
@@ -183,14 +208,76 @@ body {
     .progress-box {
         &.new {
             color: red;
-        } 
+        }
+
         &.progress {
             color: #007FFF;
         }
+
         &.done {
             color: lime;
         }
     }
+}
+
+.tip {
+    user-select: none;
+}
+
+.tab,
+.tab2 {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: row !important;
+    padding: 0;
+
+    &.tab-list {
+        margin-top: 30px;
+        color: #949494;
+    }
+
+    .title {
+        width: 20%;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+    }
+
+    .description {
+        width: 35%;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+    }
+
+    .time {
+        width: 15%;
+
+        span {
+            display: flex;
+            align-items: center;
+            margin: 0;
+
+            &:first-child {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .progress-box {
+        width: 20%;
+        text-align: center;
+    }
+}
+
+.list {
+    padding: 0;
 }
 
 .none {

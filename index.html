@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
@@ -15,10 +16,17 @@
             <button id="add-task">Добавить задачу</button>
         </div>
         <div class="tip">
-            <p>Показать задачи как: <span class="tip-span">Таблица</span> <span class="tip-span active">Плитка</span>
+            <p>Показать задачи как: <p class="tip-p"><span class="tip-span ">Таблица</span> <span class="tip-span active">Плитка</span></p>
             </p>
         </div>
-        <div class="content"></div>
+        <div class="content">
+            <div class="tab2 tab-list none">
+                <div class="title">Заголовок задачи</div>
+                <div class="description">Описание задачи</div>
+                <div class="time">Дата / Время</div>
+                <div class="progress-box">Выполнено</div>
+            </div>
+        </div>
     </div>
 
     <div class="create none">
@@ -55,8 +63,9 @@
                         <option value="progress">В прогрессе</option>
                         <option value="done">Готово</option>
                     </select>
-                    <button type="submit" class="inp editBtn">Добавить</button>
+                    <button type="submit" class="inp editBtn">Изменить</button>
                 </form>
+                <i class="removeBtn fas fas fa-trash"></i>
             </for>
         </div>
     </div>

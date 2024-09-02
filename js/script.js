@@ -7,7 +7,7 @@ const addFormBtn = AddForm.querySelector('.add')
 const EditForm = document.querySelector('#edit')
 const EditModal = document.querySelector('.edit')
 const EditFormBtn = EditForm.querySelector('.editBtn')
-
+const RemoveBtn = EditModal.querySelector('.removeBtn')
 
 AddModal.addEventListener('click', (e) => {
     const blur = AddModal.querySelector('.blur')
@@ -55,9 +55,9 @@ addFormBtn.addEventListener('click', (e) => {
             AddModal.classList.add('none')
         } else {
             inputs[i].classList.remove('error')
+            inputs[i].value = ''
             continue;
         }
-        inputs[i].value = ''
     }
 
     arr.push(obj)
@@ -70,14 +70,17 @@ function CreateElement(obj) {
     let box = document.createElement('div')
     box.classList.add('box')
     box.id = count
+    if (con.classList.contains('list')) {
+        box.classList.add('tab')
+    }
 
     let title = document.createElement('h2')
-    title.innerHTML = obj.title
+    title.innerText = obj.title
     title.classList.add('title')
     title.id = 'title'
 
     let description = document.createElement('p')
-    description.innerHTML = obj.description
+    description.innerText = obj.description
     description.classList.add('description')
     description.id = 'description'
 
@@ -86,11 +89,11 @@ function CreateElement(obj) {
 
 
     let date = document.createElement('span')
-    date.innerHTML = obj.date
+    date.innerText = obj.date
     date.id = 'date'
 
     let time = document.createElement('span')
-    time.innerHTML = obj.time
+    time.innerText = obj.time
     time.id = 'time'
 
     let progressBox = document.createElement('div')
@@ -98,13 +101,13 @@ function CreateElement(obj) {
     progressBox.id = 'progress'
 
     if (obj.progress == 'new') {
-        progressBox.innerHTML = "Не выполнено"
+        progressBox.innerText = "Не выполнено"
         progressBox.classList.add('new')
     } else if (obj.progress == 'progress') {
-        progressBox.innerHTML = "В прогрессе"
+        progressBox.innerText = "В прогрессе"
         progressBox.classList.add('progress')
     } else {
-        progressBox.innerHTML = "Выполнено"
+        progressBox.innerText = "Выполнено"
         progressBox.classList.add('done')
     }
 
@@ -132,6 +135,8 @@ function CreateElement(obj) {
         }
         edit(box)
     })
+
+
 }
 const box = document.querySelector('.box')
 
@@ -139,9 +144,9 @@ function edit(elem) {
     EditFormBtn.addEventListener('click', (e) => {
         const formData2 = new FormData(EditForm)
         const inputs = EditForm.querySelectorAll('input')
-
+        
         let obj2 = {}
-
+        
         for (let i = 0; i < inputs.length; i++) {
             if (inputs[i].value == "") {
                 inputs[i].classList.add('error')
@@ -171,7 +176,7 @@ function edit(elem) {
             }
         }
         const progress = elem.querySelector('.progress-box')
-
+        
         if (progress.innerHTML == 'new') {
             progress.innerHTML = "Не выполнено"
             progress.classList.remove('progress', 'done')
@@ -186,9 +191,38 @@ function edit(elem) {
             progress.classList.add('done')
         }
 
-
         e.preventDefault()
+    })
+
+    RemoveBtn.addEventListener('click', () => {
+        elem.remove()
+        EditModal.classList.add('none')
     })
 }
 
-// EditForm.tagName
+const tipSpan = document.querySelectorAll('.tip-span')
+
+for (let i = 0; i < tipSpan.length; i++) {
+    
+    tipSpan[i].addEventListener('click', () => {
+        const boxs = document.querySelectorAll('.box')
+        const tab = document.querySelector('.tab2')
+        if (tipSpan[0].classList.contains('active')) {
+            tipSpan[0].classList.remove('active')
+            tipSpan[1].classList.add('active')
+            con.classList.remove('list')
+            tab.classList.add('none')
+            for (let k = 0; k < boxs.length; k++) {
+                boxs[k].classList.remove('tab')
+            }
+        } else {
+            tipSpan[0].classList.add('active')
+            tipSpan[1].classList.remove('active')
+            con.classList.add('list')
+            tab.classList.remove('none')
+            for (let k = 0; k < boxs.length; k++) {
+                boxs[k].classList.add('tab')
+            }
+        }
+    })
+}
